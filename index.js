@@ -59,7 +59,6 @@ console.log(MenuElemaniOlustur('Karışık Pizza', 5, 'Pizzalar'));
 	Örnek: burger.indirim("öğretmen") 13.5 döndürmeli ve burger.indirim("diğer") 16.2 döndürmeli
 */
 
-
 const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
@@ -78,6 +77,7 @@ console.log(burger.indirim("diğer"));
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
+
 const degerlendirmeler = [
     {isim: "Nalan", puan: 5, geribildirim:"Mükemmel atmosfer ve mükemmel vegan seçenekleri!"},
     {isim: "Kuddusi", puan: 3, geribildirim:"Benim zevkime göre biraz fazla yenilikçi, burger iyi ama fiyatı yüksek"},
@@ -95,13 +95,9 @@ const degerlendirmeler = [
 */
 //console.log(degerlendirmeler[5].geribildirim)                               
 
-// degerlendirmeler.filter(
-
-// )
-
 for (let i = 0; i < degerlendirmeler.length; i++) {
 	if (degerlendirmeler[i].isim === "Ahmet") {
-		//console.log(degerlendirmeler[i].geribildirim);                       // ['geribildirim] şeklinde de yazılabilir
+		console.log(degerlendirmeler[i].geribildirim);                       // ['geribildirim] şeklinde de yazılabilir
 	}	
 }
 
@@ -118,20 +114,16 @@ let filterAhmet = degerlendirmeler.filter((degerlendirme) => {
 })
 //console.log(filterAhmet[0].geribildirim)
 
-
-
-// console.log(degerlendirmeler.filter((kisi) => {if (kisi=='Ahmet')
-// return degerlendirmeler.geribildirim
-// }))
-
 /*  Görev 4 (ototest yok):  
 	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
 
-degerlendirmeler[7].geribildirim= "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım";
-//console.log(degerlendirmeler[7].geribildirim)
+degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım";
+console.log(degerlendirmeler[7].geribildirim)
+
+
 /*  Görev 5: 
 	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
 	
@@ -257,10 +249,18 @@ function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
 */
 
 
-function arabaYapici(/* Kodlar buraya */) {
-    /* Kodlar buraya */
-    
+function arabaYapici(kmSayac) {
+  const araba = {
+	surusMetodu: function(km) {
+		return km + kmSayac;
+	}
+  }
+  return araba;
 }
+
+let araba1= new arabaYapici(100)
+
+console.log(araba1.surusMetodu())
 
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
