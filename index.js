@@ -258,9 +258,9 @@ function arabaYapici(kmSayac) {
   return araba;
 }
 
-let araba1= new arabaYapici(100)
+let araba1 = new arabaYapici(100);
 
-console.log(araba1.surusMetodu())
+console.log(araba1.surusMetodu(10));
 
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
