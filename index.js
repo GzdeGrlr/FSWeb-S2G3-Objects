@@ -15,11 +15,25 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(isim,fiyat,kategori){
+	const menuElemanı= {
+		isim:isim,
+		fiyat:fiyat,
+		kategori:kategori
+	};
+	
+	return menuElemanı;
 }
+console.log(MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler'));
 
-
+// this.isim=isim;
+// this.fiyat=fiyat;
+// this.kategori=kategori;
+// const yeniMenu = {
+// 	isim: this.isim, 
+// 	fiyat: this.fiyat, 
+// 	kategori: this.kategori};
+// return yeniMenu;
 
 /*  Görev 1b (otomatik test yok): 
 	Fonksiyonu çağırın!
@@ -30,7 +44,7 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
-
+console.log(MenuElemaniOlustur('Karışık Pizza', 5, 'Pizzalar'));
 
 
 /* Görev 2: 
@@ -50,9 +64,17 @@ const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
+	indirim: function(kisi) {
+
+		if (kisi === "öğretmen" || kisi === "öğrenci" )  {
+			return this.fiyat-(this.fiyat * 25)/100;
+		} else { 
+			return this.fiyat-(this.fiyat * 10)/100;
+		}
+	}
 
 }
-
+console.log(burger.indirim("diğer"));
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -71,8 +93,36 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
+//console.log(degerlendirmeler[5].geribildirim)                               
+
+// degerlendirmeler.filter(
+
+// )
+
+for (let i = 0; i < degerlendirmeler.length; i++) {
+	if (degerlendirmeler[i].isim === "Ahmet") {
+		//console.log(degerlendirmeler[i].geribildirim);                       // ['geribildirim] şeklinde de yazılabilir
+	}	
+}
+
+degerlendirmeler.forEach(function(degerlendirme) {
+	if (degerlendirme.isim === "Ahmet") {
+		//console.log(degerlendirme.puan);  
+	}	
+})
+
+let filterAhmet = degerlendirmeler.filter((degerlendirme) => {
+	if (degerlendirme.isim ==="Ahmet") {
+		return degerlendirme.geribildirim;
+	}
+})
+//console.log(filterAhmet[0].geribildirim)
 
 
+
+// console.log(degerlendirmeler.filter((kisi) => {if (kisi=='Ahmet')
+// return degerlendirmeler.geribildirim
+// }))
 
 /*  Görev 4 (ototest yok):  
 	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
@@ -80,8 +130,8 @@ const degerlendirmeler = [
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
 
-
-
+degerlendirmeler[7].geribildirim= "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım";
+//console.log(degerlendirmeler[7].geribildirim)
 /*  Görev 5: 
 	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
 	
@@ -94,10 +144,19 @@ const degerlendirmeler = [
 */
 
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
+function DegerledirmeEkle(callbackDeğerlendirmeler, isim,puan,geribildirim){
+	const degerlendirme = {
+		isim:isim,
+		puan:puan,
+		geribildirim:geribildirim
+	}
+
+	callbackDeğerlendirmeler.push(degerlendirme);
+	return callbackDeğerlendirmeler;
 	
 }
+
+console.log(DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!'));
 
 
 
@@ -112,12 +171,18 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(array,index) {
+
+
+	let isim = array[index].isim;
+	let puan = array[index].puan;
+	let geribildirim = array[index].geribildirim;
+
+	return `${isim} isimli kişi ${puan} puan verdi ve şunları yazdı: ${geribildirim}`
 
 }
 
-
+console.log(AnahtardanDegerlendirmeAl(degerlendirmeler,0))
 
 /*  Görev 7:  
 	Diziden en son değerlendirmeyi döndüren adı `SonDegerlendirmeyiAl` olan bir fonksiyon yazın 
@@ -132,11 +197,14 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function SonDegerlendirmeyiAl(array) {
+	
+	let sonEleman = array[array.length-1]
+
+	return `${sonEleman.isim} isimli kişi ${sonEleman.puan} puan verdi ve şunları yazdı: ${sonEleman.geribildirim}`
 } 
 
-
+console.log(SonDegerlendirmeyiAl(degerlendirmeler))
 
 /////////////// BONUS  GÖRVLER////////////////////
 
